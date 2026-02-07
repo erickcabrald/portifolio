@@ -1,10 +1,21 @@
+/* Limpeza total do CSS padrão para não conflitar com o Tailwind */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+/* Garante que o scroll entre seções seja suave quando clicar no menu */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove margens padrão que podem causar espaços brancos indesejados */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
