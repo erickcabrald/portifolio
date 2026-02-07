@@ -15,30 +15,30 @@ const categories: Category[] = [
   {
     title: "Front-end",
     techs: [
-      { name: "HTML", icon: "🌐" },
-      { name: "CSS", icon: "🎨" },
-      { name: "JavaScript", icon: "⚡" },
-      { name: "TypeScript", icon: "🔷" },
+      { name: "HTML", icon: "html5" },
+      { name: "CSS", icon: "css3" },
+      { name: "JavaScript", icon: "javascript" },
+      { name: "TypeScript", icon: "typescript" },
     ],
   },
   {
     title: "Back-end",
     techs: [
-      { name: "Node.js", icon: "🟢" },
-      { name: "Express", icon: "🚀" },
-      { name: "NestJS", icon: "🏗️" },
-      { name: "Java", icon: "☕" },
-      { name: "PostgreSQL", icon: "🐘" },
-      { name: "MySQL", icon: "🗄️" },
+      { name: "Node.js", icon: "nodejs" },
+      { name: "Express", icon: "express" },
+      { name: "NestJS", icon: "nestjs" },
+      { name: "Java", icon: "java" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "MySQL", icon: "mysql" },
     ],
   },
   {
     title: "Ferramentas & DevOps",
     techs: [
-      { name: "Git", icon: "📦" },
-      { name: "GitHub", icon: "🐙" },
-      { name: "Docker", icon: "🐳" },
-      { name: "Linux", icon: "🐧" },
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github" },
+      { name: "Docker", icon: "docker" },
+      { name: "Linux", icon: "linux" },
     ],
   },
 ];
@@ -74,14 +74,26 @@ export default function TechSection() {
               <h3 className="text-sm font-mono text-primary mb-5 uppercase tracking-wider">
                 {cat.title}
               </h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-4">
                 {cat.techs.map((t) => (
                   <div
                     key={t.name}
-                    className="flex items-center gap-2 text-sm text-secondary-foreground hover:text-primary transition-colors duration-200"
+                    className="flex items-center gap-3 text-sm text-secondary-foreground hover:text-primary transition-colors duration-200 group"
                   >
-                    <span className="text-base">{t.icon}</span>
-                    <span>{t.name}</span>
+                    <div className="w-6 h-6 flex items-center justify-center">
+                      <img
+                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${t.icon}/${t.icon}-original.svg`}
+                        alt={t.name}
+                        className="w-5 h-5 grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          if (!target.src.includes("-plain")) {
+                            target.src = `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${t.icon}/${t.icon}-plain.svg`;
+                          }
+                        }}
+                      />
+                    </div>
+                    <span className="font-medium">{t.name}</span>
                   </div>
                 ))}
               </div>
