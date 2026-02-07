@@ -5,18 +5,17 @@ on:
     branches:
       - main
 
-# Adicione este bloco aqui embaixo ⬇️
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 # Atualizado para v4
-        with:
-          persist-credentials: true # Alterado para true
+        uses: actions/checkout@v4
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -27,13 +26,14 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # O passo de "Configurar Git" manual geralmente é desnecessário
-      # com a action peaceiris, ela cuida disso internamente.
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          force_orphan: true
+          path: "./dist"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

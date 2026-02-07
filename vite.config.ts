@@ -1,13 +1,7 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
+import react from "@vitejs/plugin-react"; // ou o plugin que você usa
 
 export default defineConfig({
-  base: "/portifolio/",
   plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
+  base: "/portfolio/", // O nome do repositório deve estar entre barras
 });
