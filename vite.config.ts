@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react"; // ou o plugin que você usa
+import react from "@vitejs/plugin-react";
+import tsconfigPaths from "vite-tsconfig-paths"; // Adicione isso
 
 export default defineConfig({
-  plugins: [react()],
-  base: "/portfolio/", // O nome do repositório deve estar entre barras
+  plugins: [react(), tsconfigPaths()], // Adicione aqui
+  base: "/portfolio/",
 });
