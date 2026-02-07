@@ -5,13 +5,18 @@ on:
     branches:
       - main
 
+# Adicione este bloco aqui embaixo ⬇️
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4 # Atualizado para v4
         with:
-          persist-credentials: false
+          persist-credentials: true # Alterado para true
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -22,10 +27,8 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Configurar Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      # O passo de "Configurar Git" manual geralmente é desnecessário
+      # com a action peaceiris, ela cuida disso internamente.
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
