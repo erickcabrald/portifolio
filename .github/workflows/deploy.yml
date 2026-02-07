@@ -3,29 +3,34 @@ name: Deploy Vite to GitHub Pages
 on:
   push:
     branches:
-      - main # ou a branch que você usa
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
-      # Instalar pnpm
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Instalar dependências
       - name: Install dependencies
         run: pnpm install
 
-      # Build do projeto
       - name: Build
         run: pnpm run build
 
-      # Deploy para GitHub Pages
+      - name: Configurar Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # ou pasta de build do seu projeto
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
