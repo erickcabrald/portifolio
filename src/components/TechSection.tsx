@@ -26,11 +26,11 @@ const categories: Category[] = [
     techs: [
       { name: "Node.js", icon: "nodejs" },
       { name: "Express", icon: "express" },
+      { name: "Fastify", icon: "fastify" },
       { name: "NestJS", icon: "nestjs" },
       { name: "Java", icon: "java" },
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "MySQL", icon: "mysql" },
-      { name: "Fastify", icon: "fastify" },
     ],
   },
   {

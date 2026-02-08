@@ -1,11 +1,39 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Zap, Target } from "lucide-react";
+import { GraduationCap, Zap, Target, Award } from "lucide-react";
 
 export default function AboutSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Lista de Formações, Licenças e Certificados
+  const academicInfo = [
+    {
+      icon: GraduationCap,
+      label: "Formação",
+      value: "Técnico em Informática — IFMA",
+    },
+    {
+      icon: Award,
+      label: "Certificado",
+      value: "Networking Basics — Cisco (Jun/2024)",
+    },
+  ];
+
+  // Destaques de Perfil
+  const highlights = [
+    {
+      icon: Zap,
+      label: "Diferencial",
+      value: "Aprendo rápido e resolvo problemas complexos",
+    },
+    {
+      icon: Target,
+      label: "Objetivo",
+      value: "Primeira oportunidade na área de tecnologia",
+    },
+  ];
 
   return (
     <section id="sobre" className="py-24 px-6">
@@ -40,8 +68,12 @@ export default function AboutSection() {
               <span className="text-foreground font-medium">MySQL</span>, além
               de ferramentas como{" "}
               <span className="text-foreground font-medium">Git</span> para
-              versionamento e organização de projetos. Também domino o Pacote
-              Office — sim, aquele Excel bem feito que salva reuniões.
+              versionamento e organização de projetos. Além disso, possuo
+              conhecimentos em{" "}
+              <span className="text-foreground font-medium">
+                Redes de Computadores
+              </span>{" "}
+              certificado pela Cisco.
             </p>
             <p>
               Estou em busca da minha primeira oportunidade profissional — seja
@@ -55,31 +87,15 @@ export default function AboutSection() {
             </p>
           </div>
 
-          {/* Highlights */}
-          <div className="grid sm:grid-cols-3 gap-4 mt-10">
-            {[
-              {
-                icon: GraduationCap,
-                label: "Formação",
-                value: "Técnico em Informática — IFMA",
-              },
-              {
-                icon: Zap,
-                label: "Diferencial",
-                value: "Aprendo rápido e resolvo problemas complexos",
-              },
-              {
-                icon: Target,
-                label: "Objetivo",
-                value: "Primeira oportunidade na área de tecnologia",
-              },
-            ].map((item, i) => (
+          {/* Grid de Formações e Certificados */}
+          <div className="grid sm:grid-cols-2 gap-4 mt-10">
+            {[...academicInfo, ...highlights].map((item, i) => (
               <motion.div
-                key={item.label}
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                className="rounded-lg border border-border bg-card p-4"
+                className="rounded-lg border border-border bg-card p-4 hover:border-primary/50 transition-colors"
               >
                 <item.icon size={18} className="text-primary mb-2" />
                 <p className="text-xs font-mono text-primary uppercase tracking-wider mb-1">
