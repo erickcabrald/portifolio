@@ -30,6 +30,7 @@ const categories: Category[] = [
       { name: "Java", icon: "java" },
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "MySQL", icon: "mysql" },
+      { name: "Fastify", icon: "fastify" },
     ],
   },
   {

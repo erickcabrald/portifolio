@@ -16,29 +16,12 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Task Manager API",
+    title: "Api para gerenciamento de projetos",
     description:
-      "API RESTful para gerenciamento de tarefas com autenticação JWT, CRUD completo e documentação Swagger.",
-    techs: ["Node.js", "NestJS", "TypeScript", "Docker"],
-    github: "https://github.com/seuusuario/task-manager-api",
+      "API RESTful para gerenciamento de projetos com autenticação JWT, CRUD completo e documentação Swagger.",
+    techs: ["Node.js", "Fastify", "TypeScript", "Docker", "MySQL"],
+    github: "https://github.com/erickcabrald/GerenciamentoProjetos",
     image: projectTaskManager,
-  },
-  {
-    title: "DevFinder",
-    description:
-      "Aplicação web que consome a API do GitHub para buscar perfis de desenvolvedores e exibir seus repositórios.",
-    techs: ["JavaScript", "HTML", "CSS", "GitHub API"],
-    github: "https://github.com/seuusuario/devfinder",
-    live: "https://devfinder-demo.vercel.app",
-    image: projectDevfinder,
-  },
-  {
-    title: "URL Shortener",
-    description:
-      "Encurtador de URLs com contagem de cliques, validação de links e redirecionamento automático.",
-    techs: ["Node.js", "Express", "TypeScript", "PostgreSQL"],
-    github: "https://github.com/seuusuario/url-shortener",
-    image: projectUrlShortener,
   },
 ];
 
