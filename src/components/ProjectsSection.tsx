@@ -21,6 +21,14 @@ const projects: Project[] = [
     github: "https://github.com/erickcabrald/EncurtadorUrl",
     image: projectTaskManager,
   },
+  {
+    title: "Edital Fácil",
+    description:
+      "Aplicação que utiliza inteligência artificial para analisar editais em PDF e gerar resumos com informações importantes, como prazos de inscrição, requisitos, documentos necessários e etapas do processo seletivo.",
+    techs: ["React", "TypeScript", "Fastify", "Google Gemini", "PostgreSQL"],
+    github: "https://github.com/erickcabrald/analiseDeEditais",
+    image: projectTaskManager,
+  },
 ];
 export default function ProjectsSection() {
   const ref = useRef(null);
