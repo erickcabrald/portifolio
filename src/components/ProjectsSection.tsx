@@ -2,8 +2,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import projectTaskManager from "@/assets/project-task-manager.jpg";
-import projectDevfinder from "@/assets/project-devfinder.jpg";
-import projectUrlShortener from "@/assets/project-url-shortener.jpg";
 
 interface Project {
   title: string;
@@ -16,15 +14,14 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Api para gerenciamento de projetos",
+    title: "Encurtador de URLs",
     description:
-      "API RESTful para gerenciamento de projetos com autenticação JWT, CRUD completo e documentação Swagger.",
-    techs: ["Node.js", "Fastify", "TypeScript", "Docker", "MySQL"],
-    github: "https://github.com/erickcabrald/GerenciamentoProjetos",
+      "API REST para encurtar URLs e redirecionar usuários para os links originais, utilizando Node.js e Fastify.",
+    techs: ["Node.js", "Fastify", "JavaScript", "Docker", "MongoDB"],
+    github: "https://github.com/erickcabrald/EncurtadorUrl",
     image: projectTaskManager,
   },
 ];
-
 export default function ProjectsSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -51,7 +48,7 @@ export default function ProjectsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300"
+              className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300"
             >
               {/* Project preview image */}
               <div className="relative overflow-hidden">
@@ -67,24 +64,30 @@ export default function ProjectsSection() {
               <div className="p-6 pt-3">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                    {p.title}
-                  </h3>
-                  <div className="flex gap-3">
+                    {/* Stretched link: cobre o card inteiro */}
                     <a
                       href={p.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                      aria-label="GitHub"
+                      aria-label={`${p.title} no GitHub`}
+                      className="after:absolute after:inset-0 after:rounded-xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-primary"
                     >
-                      <Github size={18} />
+                      {p.title}
                     </a>
+                  </h3>
+
+                  <div className="flex gap-3">
+                    <Github
+                      size={18}
+                      className="text-muted-foreground group-hover:text-primary transition-colors"
+                      aria-hidden="true"
+                    />
                     {p.live && (
                       <a
                         href={p.live}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="relative z-10 text-muted-foreground hover:text-primary transition-colors"
                         aria-label="Demo"
                       >
                         <ExternalLink size={18} />

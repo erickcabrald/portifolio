@@ -36,7 +36,7 @@ export default function HeroSection() {
           className="text-xl md:text-2xl text-muted-foreground mb-2"
         >
           Desenvolvedor{" "}
-          <span className="text-gradient font-semibold">Backend</span>
+          <span className="text-gradient font-semibold">Full-Stack</span>
         </motion.p>
 
         <motion.p
