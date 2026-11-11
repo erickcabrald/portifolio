@@ -1,7 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
-import projectTaskManager from "@/assets/project-task-manager.jpg";
+import projectEditalFacil from "@/assets/editalFacil.png";
+import projectEncurtadorUrl from "@/assets/encurtadorUrl.png";
 
 interface Project {
   title: string;
@@ -19,7 +20,7 @@ const projects: Project[] = [
       "API REST para encurtar URLs e redirecionar usuários para os links originais, utilizando Node.js e Fastify.",
     techs: ["Node.js", "Fastify", "JavaScript", "Docker", "MongoDB"],
     github: "https://github.com/erickcabrald/EncurtadorUrl",
-    image: projectTaskManager,
+    image: projectEncurtadorUrl,
   },
   {
     title: "Edital Fácil",
@@ -27,7 +28,7 @@ const projects: Project[] = [
       "Aplicação que utiliza inteligência artificial para analisar editais em PDF e gerar resumos com informações importantes, como prazos de inscrição, requisitos, documentos necessários e etapas do processo seletivo.",
     techs: ["React", "TypeScript", "Fastify", "Google Gemini", "PostgreSQL"],
     github: "https://github.com/erickcabrald/analiseDeEditais",
-    image: projectTaskManager,
+    image: projectEditalFacil,
   },
 ];
 export default function ProjectsSection() {
