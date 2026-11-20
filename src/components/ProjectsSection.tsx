@@ -20,7 +20,7 @@ const projects: Project[] = [
       "API REST para encurtar URLs e redirecionar usuários para os links originais, utilizando Node.js e Fastify.",
     techs: ["Node.js", "Fastify", "JavaScript", "Docker", "MongoDB"],
     github: "https://github.com/erickcabrald/EncurtadorUrl",
-    live: "https://edital-facil-web.vercel.app/",
+    //live: "https:",
     image: projectEncurtadorUrl,
   },
   {
@@ -29,7 +29,7 @@ const projects: Project[] = [
       "Aplicação que utiliza inteligência artificial para analisar editais em PDF e gerar resumos com prazos, requisitos e documentos necessários.",
     techs: ["React", "TypeScript", "Fastify", "Google Gemini", "PostgreSQL"],
     github: "https://github.com/erickcabrald/analiseDeEditais",
-    // live: "https://seu-site.com",
+    live: "https://edital-facil-web.vercel.app/",
     image: projectEditalFacil,
   },
 ];
