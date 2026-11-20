@@ -20,20 +20,26 @@ const projects: Project[] = [
       "API REST para encurtar URLs e redirecionar usuários para os links originais, utilizando Node.js e Fastify.",
     techs: ["Node.js", "Fastify", "JavaScript", "Docker", "MongoDB"],
     github: "https://github.com/erickcabrald/EncurtadorUrl",
+    live: "https://edital-facil-web.vercel.app/",
     image: projectEncurtadorUrl,
   },
   {
     title: "Edital Fácil",
     description:
-      "Aplicação que utiliza inteligência artificial para analisar editais em PDF e gerar resumos com informações importantes, como prazos de inscrição, requisitos, documentos necessários e etapas do processo seletivo.",
+      "Aplicação que utiliza inteligência artificial para analisar editais em PDF e gerar resumos com prazos, requisitos e documentos necessários.",
     techs: ["React", "TypeScript", "Fastify", "Google Gemini", "PostgreSQL"],
     github: "https://github.com/erickcabrald/analiseDeEditais",
+    // live: "https://seu-site.com",
     image: projectEditalFacil,
   },
 ];
+
 export default function ProjectsSection() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, {
+    once: true,
+    margin: "-100px",
+  });
 
   return (
     <section id="projetos" className="py-24 px-6">
@@ -47,6 +53,7 @@ export default function ProjectsSection() {
             <span className="text-primary font-mono text-lg mr-2">03.</span>
             Projetos
           </h2>
+
           <div className="w-16 h-0.5 bg-primary/40 mb-10" />
         </motion.div>
 
@@ -57,59 +64,33 @@ export default function ProjectsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300"
+              className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Project preview image */}
+              {/* Imagem do projeto */}
               <div className="relative overflow-hidden">
                 <img
                   src={p.image}
-                  alt={`Preview do projeto ${p.title}`}
+                  alt={`Prévia do projeto ${p.title}`}
                   className="w-full h-44 object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent pointer-events-none" />
               </div>
 
               <div className="p-6 pt-3">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                    {/* Stretched link: cobre o card inteiro */}
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${p.title} no GitHub`}
-                      className="after:absolute after:inset-0 after:rounded-xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-primary"
-                    >
-                      {p.title}
-                    </a>
-                  </h3>
+                {/* Título */}
+                <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors">
+                  {p.title}
+                </h3>
 
-                  <div className="flex gap-3">
-                    <Github
-                      size={18}
-                      className="text-muted-foreground group-hover:text-primary transition-colors"
-                      aria-hidden="true"
-                    />
-                    {p.live && (
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="relative z-10 text-muted-foreground hover:text-primary transition-colors"
-                        aria-label="Demo"
-                      >
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                {/* Descrição */}
+                <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
                   {p.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                {/* Tecnologias */}
+                <div className="flex flex-wrap gap-2 mb-6">
                   {p.techs.map((t) => (
                     <span
                       key={t}
@@ -118,6 +99,33 @@ export default function ProjectsSection() {
                       {t}
                     </span>
                   ))}
+                </div>
+
+                {/* Ações */}
+                <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border">
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ver código-fonte de ${p.title} no GitHub`}
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+                  >
+                    <Github size={16} />
+                    GitHub
+                  </a>
+
+                  {p.live && (
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Acessar demonstração de ${p.title}`}
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 hover:shadow-[0_0_15px_hsl(var(--primary)/0.25)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+                    >
+                      Ver projeto
+                      <ExternalLink size={15} />
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.article>
