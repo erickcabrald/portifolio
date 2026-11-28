@@ -8,18 +8,39 @@ export default function AboutSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   // Lista de Formações, Licenças e Certificados
-  const academicInfo = [
-    {
-      icon: GraduationCap,
-      label: "Formação",
-      value: "Técnico em Informática — IFMA",
-    },
-    {
-      icon: Award,
-      label: "Certificado",
-      value: "Networking Basics — Cisco (Jun/2024)",
-    },
-  ];
+// Lista de Formações, Licenças e Certificados
+const academicInfo = [
+  {
+    icon: GraduationCap,
+    label: "Formação",
+    value: "Técnico em Informática — IFMA",
+  },
+  {
+    icon: GraduationCap,
+    label: "Graduação",
+    value: "ADS — UniCEUMA (2026–2028)",
+  },
+  {
+    icon: Award,
+    label: "Certificado — Cisco",
+    value: "Networking Basics",
+  },
+  {
+    icon: Award,
+    label: "Certificado — Coursera",
+    value: "Design e Experiência do Usuário",
+  },
+  {
+    icon: Award,
+    label: "Certificado — Coursera",
+    value: "Desenvolvimento Web",
+  },
+  {
+    icon: Award,
+    label: "Certificado — Coursera",
+    value: "Interfaces Dinâmicas e Reativas",
+  },
+];
 
   // Destaques de Perfil
   const highlights = [
@@ -88,7 +109,7 @@ export default function AboutSection() {
           </div>
 
           {/* Grid de Formações e Certificados */}
-          <div className="grid sm:grid-cols-2 gap-4 mt-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
             {[...academicInfo, ...highlights].map((item, i) => (
               <motion.div
                 key={i}
